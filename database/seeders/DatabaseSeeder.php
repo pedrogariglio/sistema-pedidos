@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
                             'price' => $product->price,      // Precio actual del producto
                             'quantity' => fake()->numberBetween(1, 5), // Cantidad aleatoria entre 1 y 5
                         ];
-                    })
+                    }),
+                'items'    
             )->create();   // Ejecuta la creación de las órdenes con sus items
     }
 }
