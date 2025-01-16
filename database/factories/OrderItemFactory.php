@@ -20,10 +20,10 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => Order::factory(),
-            'product_id' => Product::factory(),
+            'order_id' => Order::factory(), //Genero un Order (pedido) utilizando el factory asociado al modelo Order y asigno su ID al campo order_id
+            'product_id' => Product::factory(), //Genero un product (producto) utilizando el factory asociado al modelo Product y asigna su ID al campo product_id
             'quantity' => $this->faker->numberBetween(1, 5),
-            'price' => $this->faker->randomFloat(2, 10, 100),
+            'price' => $this->faker->randomFloat(2, 10, 100), //Genero un número aleatorio de 2 decimales comprendido entre 10 y 100
         ];
     }
 }

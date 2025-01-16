@@ -20,7 +20,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), //Genero un usuario ficticio para el pedido
+            'user_id' => User::factory(), //Genero un usuario ficticio usando el factory asociado al modelo User y asigna su ID al campo user
             'status' => 'processing',
             'total_price' => 0, //Este valor se calculará al agregar los detalles
         ];
