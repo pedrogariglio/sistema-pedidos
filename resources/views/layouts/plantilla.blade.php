@@ -14,12 +14,14 @@
         </div>
     </div>
     
+    <!-- Contenido principal -->
     <main>
         @yield('content')
     </main>
     
-    <footer>
-        <!-- Pie de página -->
-    </footer>
+    <div class="pie">
+        @yield("pie")
+        DataBasePG. Todos los derechos reservados. &copy;2024
+    </div>
 </body>
 </html>

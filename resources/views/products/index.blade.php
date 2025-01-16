@@ -7,11 +7,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
                 <th>Stock</th>
-                <th>Acciones</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,4 +35,8 @@
         </tbody>
     </table>
 </div>
+@endsection
+
+@section('pie')
+    <p>¡Gracias por utilizar nuestro sistema!</p>
 @endsection
