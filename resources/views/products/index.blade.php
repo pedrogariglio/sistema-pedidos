@@ -1,9 +1,23 @@
 @extends('../layouts.plantilla')
 
+@section('cabecera')
+<h1>Product List</h1>
+@endsection
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 @section('content')
 @csrf
 <div class="container">
-    <h1 class="my-4">Lista de Productos</h1>
     <table class="table table-bordered">
         <thead>
             <tr>

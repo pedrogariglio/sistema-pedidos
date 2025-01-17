@@ -25,7 +25,7 @@
                     <form action="{{ route('orders.destroy', $order) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -33,4 +33,8 @@
         </tbody>
     </table>
 </div>
+@endsection
+
+@section('pie')
+    <p>¡Gracias por utilizar nuestro sistema!</p>
 @endsection
