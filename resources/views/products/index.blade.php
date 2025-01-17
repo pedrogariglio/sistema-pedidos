@@ -1,6 +1,7 @@
 @extends('../layouts.plantilla')
 
 @section('content')
+@csrf
 <div class="container">
     <h1 class="my-4">Lista de Productos</h1>
     <table class="table table-bordered">
@@ -23,11 +24,17 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td>
-                    <a href="{{ route('products.edit', $product) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form action="{{ route('products.create') }}" style="display: inline-block">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Insert record</button>
+                    </form>
+                    <form action="{{ route('products.edit', $product) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
                     <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
