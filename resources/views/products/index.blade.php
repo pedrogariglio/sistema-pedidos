@@ -16,6 +16,15 @@
 @endif
 
 @section('content')
+<div>
+ <!-- Formulario de búsqueda -->
+ <form method="GET" action="{{ route('products.index') }}" enctype="multipart/form-data" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search by name or ID" value="{{ request('search') }}">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+</div>
 <div class="overflow-x-auto bg-white shadow-md rounded-lg">
     <table class="min-w-full border-collapse block md:table">
         <thead class="block md:table-header-group">
@@ -37,10 +46,7 @@
                 <td class="px-4 py-2 block md:table-cell">{{ $product->price }}</td>
                 <td class="px-4 py-2 block md:table-cell">{{ $product->stock }}</td>
                 <td class="px-4 py-2 block md:table-cell">
-                    <form action="{{ route('products.create') }}" class="inline-block">
-                        @csrf
-                        <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-700">Insert</button>
-                    </form>
+                  
                     <form action="{{ route('products.edit', $product) }}" class="inline-block">
                         <button type="submit" class="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-700">Update</button>
                     </form>
@@ -54,6 +60,17 @@
             @endforeach
         </tbody>
     </table>
+</div>
+
+<div>
+<form action="{{ route('products.create') }}" class="inline-block">
+    @csrf
+    <button type="submit" class="bg-blue-500 text-white py-1 px-8 mt-4 rounded hover:bg-blue-700">New product</button>
+</form>
+</div>
+
+<div class="mt-4 px-4">
+    {{ $products->links() }}
 </div>
 @endsection
 

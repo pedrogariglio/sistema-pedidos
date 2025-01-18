@@ -7,14 +7,14 @@
     <title>Sistema de Pedidos</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white py-4 shadow">
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+    <header class="bg-blue-400 text-white py-4 shadow">
         <div class="container mx-auto">
             <h1 class="text-2xl font-bold">@yield("cabecera")</h1>
         </div>
     </header>
     
-    <main class="container mx-auto my-6">
+    <main class="container mx-auto my-6 flex-grow">
         @yield('content')
     </main>
     
