@@ -18,7 +18,7 @@
         @yield('content')
     </main>
     
-    <footer class="bg-gray-800 text-white py-4 mt-6 text-center">
+    <footer class="bg-gray-600 text-white py-4 mt-6 text-center">
         @yield("pie")
         <p class="text-sm">DataBasePG. Todos los derechos reservados. &copy;2024</p>
     </footer>
