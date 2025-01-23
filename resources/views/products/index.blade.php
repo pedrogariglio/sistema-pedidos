@@ -1,7 +1,7 @@
 @extends('../layouts.plantilla')
 
 @section('cabecera')
-<h1 class="text-center text-3xl font-bold">Product List</h1>
+<h1 class="text-center text-3xl font-bold">Products List</h1>
 @endsection
 
 @if (session('success'))
