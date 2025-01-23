@@ -24,7 +24,7 @@ class ProductoSearchRequest extends FormRequest
         return [
             'search' => 'nullable|string|max:100', // Término de búsqueda opcional, máximo 100 caracteres
             'per_page' => 'nullable|integer|in:10,25,50',
-            'sort_by' => 'nullable|string|in:name,price,created_at,', // Campos permitidos para ordenar
+            'sort_by' => 'nullable|string|in:id,name,price,created_at,', // Campos permitidos para ordenar
             'sort_order' => 'nullable|string|in:asc,desc', // Ordenamiento ascendente o descendente
         ];
     }
@@ -34,7 +34,7 @@ class ProductoSearchRequest extends FormRequest
         return [
             'search' => $this->input('search'),
             'per_page' => $this->input('per_page', 10), // Por defecto 10 items por página
-            'sort_by' => $this->input('sort_by', 'created_at'), // Por defecto ornena por fecha de creación
+            'sort_by' => $this->input('sort_by', 'id',), // Por defecto ornena por id
             'sort_order' => $this->input('sort_order', 'desc'), // Por defecto orden descendente
         ];
     }

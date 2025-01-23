@@ -18,6 +18,7 @@ class ProductController extends Controller
         $validated = $request->validated();
         
         $query = Product::query();
+        
         // Si existe un término de búsqueda aplica los los filtros
         if ($validated['search']) {
             $query->where(function ($q) use ($validated) {
@@ -25,10 +26,12 @@ class ProductController extends Controller
                 ->orWhere('id', 'like', '%' . $validated['search'] . '%');
             });
         }
+        
         // Aplico el ordenamiento si el campo es válido
-        if (in_array($validated['sort_by'], ['name', 'price', 'created_at'])) {
+        if (in_array($validated['sort_by'], ['id','name', 'price', 'created_at'])) {
             $query->orderBy($validated['sort_by'], $validated['sort_order']);
         }
+        
         // Ejecuto la consulta con paginación
         // appends () mantiene los párametros de búsqueda en la URL
         $products = $query->paginate($validated['per_page'])
