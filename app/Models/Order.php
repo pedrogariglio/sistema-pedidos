@@ -22,4 +22,18 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_CANCELLED = 'cancelled';
+
+    public function getStatusColorClass()
+    {
+        return match($this->status) {
+            self::STATUS_PENDING => 'text-yellow-600',
+            self::STATUS_COMPLETED => 'text-green-600',
+            self::STATUS_CANCELLED => 'text-red-600',
+            default => 'text-gray-600'
+        };
+    }
 }
