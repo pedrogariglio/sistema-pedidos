@@ -26,51 +26,52 @@
 </form>
 </div>
 
-<!-- Ordenamiento -->
-<div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
-    <div class="w-full sm:w-1/2">
-        <label for="sort_id" class="block text-sm font-medium text-gray-700">Sort by ID</label>
-        <select name="sort_by" id="sort_id"
-                onchange="window.location.href=this.value"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-            <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'id', 'sort_order' => 'asc']) }}"
-                    {{ request('sort_by') == 'id' && request('sort_order') == 'asc' ? 'selected' : '' }}>
-                ID ↑     
-            </option>
-            <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'id', 'sort_order' => 'desc']) }}"
-                    {{ request('sort_by') == 'id' && request('sort_order') == 'desc' ? 'selected' : ''}}>
-                ID ↓
-            </option>
-        </select>
-    </div>
-
-    <div class="w-full sm:w-1/2">
-        <label for="sort_price" class="block text-sm font-medium text-gray-700">Sort by Price</label>
-        <select name="sort_by" id="sort_price"
-                onchange="window.location.href=this.value"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-            <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => 'asc']) }}"
-                    {{ request('sort_by') == 'price' && request('sort_order') == 'asc' ? 'selected' : '' }}>
-                PRICE ↑     
-            </option>
-            <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => 'desc']) }}"
-                    {{ request('sort_by') == 'price' && request('sort_order') == 'desc' ? 'selected' : ''}}>
-                PRICE ↓
-            </option>
-        </select>
-    </div>
-</div>
-
 <!-- Tabla Responsive -->
 <div class="overflow-x-auto">
     <table class="w-full border-collapse">
         <thead>
             <tr class="bg-gray-200">
-                <th class="p-2 text-left hidden md:table-cell">ID</th>
+                <th class="p-2 text-left hidden md:table-cell">
+                    <select name="sort_by" id="sort_id"
+                            onchange="window.location.href=this.value"
+                            class="mt-1 block w-5px rounded-md border-gray-300 shadow-sm">
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'id', 'sort_order' => 'asc']) }}"
+                    {{ request('sort_by') == 'id' && request('sort_order') == 'asc' ? 'selected' : '' }}>
+                        ID ↑     
+                    </option>
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'id', 'sort_order' => 'desc']) }}"
+                    {{ request('sort_by') == 'id' && request('sort_order') == 'desc' ? 'selected' : ''}}>
+                        ID ↓
+                </option>
+                </select></th>
                 <th class="p-2 text-left hidden md:table-cell">Name</th>
                 <th class="p-2 text-left hidden md:table-cell">Description</th>
-                <th class="p-2 text-left hidden md:table-cell">Price</th>
-                <th class="p-2 text-left hidden md:table-cell">Stock</th>
+                <th class="p-2 text-left hidden md:table-cell"> 
+                    <select name="sort_by" id="sort_price"
+                            onchange="window.location.href=this.value"
+                            class="mt-1 block w-5px rounded-md border-gray-300 shadow-sm">
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => 'asc']) }}"
+                        {{ request('sort_by') == 'price' && request('sort_order') == 'asc' ? 'selected' : '' }}>
+                        PRICE ↑     
+                    </option>
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'price', 'sort_order' => 'desc']) }}"
+                        {{ request('sort_by') == 'price' && request('sort_order') == 'desc' ? 'selected' : ''}}>
+                        PRICE ↓
+                    </option>
+                    </select></th>
+                <th class="p-2 text-left hidden md:table-cell">
+                    <select name="sort_by" id="sort_stock"
+                            onchange="window.location.href=this.value"
+                            class="mt-1 block w-5px rounded-md border-gray-300 shadow-sm">
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'stock', 'sort_order' => 'asc']) }}"
+                        {{ request('sort_by') == 'stock' && request('sort_order') == 'asc' ? 'selected' : '' }}>
+                        STOCK ↑
+                    </option>
+                    <option value="{{ request()->fullUrlWithQuery(['sort_by' => 'stock', 'sort_order' => 'desc']) }}"
+                        {{ request('sort_by') == 'stock' && request('sort_order') == 'desc' ? 'selected' : '' }}>
+                        STOCK ↓
+                    </option>
+                    </select></th>
                 <th class="p-2 text-left hidden md:table-cell">Actions</th>
             </tr>
         </thead>

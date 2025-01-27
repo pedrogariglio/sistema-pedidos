@@ -28,7 +28,7 @@ class ProductController extends Controller
         }
         
         // Aplico el ordenamiento si el campo es válido
-        if (in_array($validated['sort_by'], ['id','name', 'price', 'created_at'])) {
+        if (in_array($validated['sort_by'], ['id','name', 'price', 'created_at', 'stock'])) {
             $query->orderBy($validated['sort_by'], $validated['sort_order']);
         }
         
