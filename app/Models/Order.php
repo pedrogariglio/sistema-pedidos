@@ -36,4 +36,11 @@ class Order extends Model
             default => 'text-gray-600'
         };
     }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->items->sum(function($item) {
+            return $item->price * $item->quantity;
+        });
+    }
 }

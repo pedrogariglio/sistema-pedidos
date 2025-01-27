@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,8 +11,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrderFactory extends Factory
 {
+    protected $model = Order::class;
 
-    protected $model = \App\Models\Order::class;
     /**
      * Define the model's default state.
      *
@@ -20,9 +21,43 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), //Genero un usuario ficticio usando el factory asociado al modelo User y asigna su ID al campo user
-            'status' => 'processing',
-            'total_price' => 0, //Este valor se calculará al agregar los detalles
+            'user_id' => User::factory(),
+            'status' => $this->faker->randomElement([
+                Order::STATUS_PENDING,
+                Order::STATUS_COMPLETED,
+                Order::STATUS_CANCELLED
+            ]),
+            'total_price' => 0, // Este valor se calculará al agregar los detalles
         ];
+    }
+
+    /**
+     * Indicate that the order is pending.
+     */
+    public function pending(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => Order::STATUS_PENDING
+        ]);
+    }
+
+    /**
+     * Indicate that the order is completed.
+     */
+    public function completed(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => Order::STATUS_COMPLETED
+        ]);
+    }
+
+    /**
+     * Indicate that the order is cancelled.
+     */
+    public function cancelled(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => Order::STATUS_CANCELLED
+        ]);
     }
 }
