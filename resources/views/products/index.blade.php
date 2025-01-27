@@ -104,16 +104,12 @@
 <div class="flex flex-col sm:flex-row justify-between items-center mt-4">
     <form action="{{ route('products.create') }}" class="w-full sm:w-auto mb-2 sm:mb-0">
         @csrf
-        <button type="submit" class="w-full sm:w-auto bg-blue-500 text-white py-1 px-8 rounded hover:bg-blue-700">New product</button>
+        <button type="submit" class="w-full sm:w-auto bg-blue-500 text-white py-2 px-8 rounded hover:bg-blue-700">New product</button>
     </form>
     
     <div class="w-full sm:w-auto">
         {{ $products->links() }}
     </div>
-</div>
-
-<div class="mt-4 px-4">
-    {{ $products->links() }}
 </div>
 @endsection
 
