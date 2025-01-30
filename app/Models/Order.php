@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-    //Campos que se pueden rellenar masivamente 
+    // Campos que se pueden rellenar masivamente 
     protected $fillable = ['user_id', 'status', 'total_price'];
 
     //Relación con OrderItem (Un pedido tiene muchos productos)
@@ -17,7 +17,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    //Relación con User (Un pedido tiene un usuario)
+    // Relación con User (Un pedido tiene un usuario)
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,10 +37,22 @@ class Order extends Model
         };
     }
 
-    public function getTotalPriceAttribute()
+    public static function booted()
+    {
+        static::saving(function($order) {
+            $order->total_price = $order->calculateTotalPrice();
+        });
+    }
+
+    public function calculateTotalPrice()
     {
         return $this->items->sum(function($item) {
             return $item->price * $item->quantity;
-        });
+        });   
+    }
+
+    public function getTotalPriceAttribute()
+    {
+       return $this->attributes['total_price'] ?? $this->calculateTotalPrice();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderSearchRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,24 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(OrderSearchRequest $request)
     {
-        $orders = \App\Models\Order::with('user')->get();
+        $validated = $request->validated();
+        $query = Order::query()->with('user');
+
+        if ($validated['search']) {
+            $query->where(function($q) use ($validated) {
+                $q->where('name', 'like', '%' . $validated['search'] . '%')
+                ->orWhere('id', 'like', '%' . $validated['search'] . '%');
+            });
+        }
+
+        if(in_array($validated['sort_by'], ['id', 'name', 'total_price', 'created_at'])) {
+            $query->orderBy($validated['sort_by'], $validated['sort_order']);
+        }
+
+        $orders = $query->paginate($validated['per_page'])
+                 ->appends(request()->query()); 
 
         return view('orders.index', compact('orders'));
     }
