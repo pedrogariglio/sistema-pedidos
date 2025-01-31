@@ -22,8 +22,8 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'name' => 'required|string|max:255|unique:products,name,' . $this->route('product'),
+            'description' => 'nullable|string|max:1000',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
         ];
@@ -33,9 +33,16 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name.required' => 'Product name required.',
+            'namw.unique' => 'There is already a product wiht that name',
+            'name.max' => 'The name of the product cannot exceed 255 characters',
+
             'price.required' => 'Product price required.',
             'price.numeric' => 'Price must be positive number.',
+            'price.min' => 'Price must be positive number',
+
+            'stock.required' => 'Stock quantity is required',
             'stock.integer' => 'Stock must be a whole number.',
+            'stock.min' => 'Stock must be positive number',
         ];
     }
 
