@@ -20,7 +20,7 @@
     
     <footer class="bg-gray-600 text-white py-4 mt-6 text-center">
         @yield("pie")
-        <p class="text-sm">DataBasePG. Todos los derechos reservados. &copy;2024</p>
+        <p class="text-sm">DataBasePG. All rights reserved. &copy;2025</p>
     </footer>
 </body>
 </html>
