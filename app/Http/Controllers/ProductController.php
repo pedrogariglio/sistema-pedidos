@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+
 class ProductController extends Controller
 {
     /**
@@ -98,4 +99,8 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product delete successfully');
     }
+
+    
+    
+    
 }

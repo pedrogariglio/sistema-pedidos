@@ -80,9 +80,11 @@
             <tr class="border-b">
                 <td class="p-2 block md:table-cell" data-label="ID">{{ $product->id }}</td>
                 <td class="p-2 block md:table-cell" data-label="Name">{{ $product->name }}</td>
-                <td class="p-2 block md:table-cell" data-label="Description">{{ $product->description }}</td>
-                <td class="p-2 block md:table-cell" data-label="Price">{{ $product->price }}</td>
-                <td class="p-2 block md:table-cell" data-label="Stock">{{ $product->stock }}</td>
+                <td class="p-2 block md:table-cell" data-label="Description">{{ $product->short_description }}</td>
+                <td class="p-2 block md:table-cell" data-label="Price">{{ $product->price_formatted }}</td>
+                <td class="p-2 block md:table-cell {{ $product->getStockStatusClass() }}" data-label="Stock">
+                    {{ $product->getStockStatusText() }}
+                </td>                           
                 <td class="p-2 block md:table-cell" data-label="Actions">
                     <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                         <form action="{{ route('products.edit', $product) }}" class="w-full sm:w-auto">
