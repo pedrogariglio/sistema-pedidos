@@ -117,5 +117,5 @@
 @endsection
 
 @section('pie')
-    <p class="text-center">¡Gracias por utilizar nuestro sistema!</p>
+    <p class="text-center">Thanks you for using our system!</p>
 @endsection
