@@ -48,16 +48,31 @@
                 <td class="p-2 block md:table-cell" data-label="Status">{{ $order->status }}</td>
                 <td class="p-2 block md:table-cell" data-label="Price">{{ $order->total_price }}</td>
                 <td class="p-2 block md:table-cell" data-label="Actions">
-                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                        <form action="{{ route('orders.show', $order) }}" class="w-full sm:w-auto">
-                            <button type="submit" class="w-full sm:w-auto bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-700">See</button>
-                        </form>
-                        <form action="{{ route('orders.destroy', $order) }}" method="POST" class="w-full sm:w-auto">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="w-full sm:w-auto bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700">Delete</button>
-                        </form>
+                    <div class="dropdown">
+                        <button onclick="toggleDropdown({{ $order->id }})" class="dropdown-btn">Actions</button>
+                        <div id="myDropdown{{ $order->id }}" class="dropdown-content">
+                            <a href="{{ route('orders.show', $order) }}">
+                                <svg class="icon search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                See
+                            </a>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $order->id }}').submit();">
+                                <svg class="icon delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
+                                Delete
+                            </a>
+                        </div>
                     </div>
+                    <form id="delete-form-{{ $order->id }}" action="{{ route('orders.destroy', $order) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 </td>
             </tr>
             @endforeach
