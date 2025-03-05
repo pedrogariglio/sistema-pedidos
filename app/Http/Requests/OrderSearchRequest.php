@@ -11,7 +11,7 @@ class OrderSearchRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; //Autorizo al usuario a que realice la solicitud 
+        return true; // Autorizo al usuario a que realice la solicitud
     }
 
     /**
@@ -26,16 +26,6 @@ class OrderSearchRequest extends FormRequest
             'per_page' => 'nullable|integer|in:10,25,50',
             'sort_by' => 'nullable|string|in:id,total_price',
             'sort_order' => 'nullable|string|in:asc,desc',
-        ];
-    }
-
-    public function validated($key = null, $default = null)
-    {
-        return [
-            'search' => $this->input('search'),
-            'per_page' => $this->input('per_page', 10),
-            'sort_by' => $this->input('sort_by', 'id'), // Por defecto ordena por ID
-            'sort_order' => $this->input('sort_order', 'desc'), // Por defecto orden descendente 
         ];
     }
 }

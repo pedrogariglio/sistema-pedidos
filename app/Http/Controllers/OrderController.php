@@ -14,21 +14,27 @@ class OrderController extends Controller
     public function index(OrderSearchRequest $request)
     {
         $validated = $request->validated();
+
+        // Valores por defecto
+        $validated['sort_by'] = $validated['sort_by'] ?? 'id';
+        $validated['sort_order'] = $validated['sort_order'] ?? 'desc';
+        $validated['per_page'] = $validated['per_page'] ?? 10;
+
         $query = Order::query()->with('user');
 
-        if ($validated['search']) {
+        if (!empty($validated['search'])) {
             $query->where(function($q) use ($validated) {
                 $q->where('name', 'like', '%' . $validated['search'] . '%')
                 ->orWhere('id', 'like', '%' . $validated['search'] . '%');
             });
         }
 
-        if(in_array($validated['sort_by'], ['id', 'name', 'total_price', 'created_at'])) {
+        if (in_array($validated['sort_by'], ['id', 'total_price'])) {
             $query->orderBy($validated['sort_by'], $validated['sort_order']);
         }
 
         $orders = $query->paginate($validated['per_page'])
-                 ->appends(request()->query()); 
+                ->appends(request()->query()); 
 
         return view('orders.index', compact('orders'));
     }
