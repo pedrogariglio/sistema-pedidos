@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderSearchRequest;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -91,5 +92,22 @@ class OrderController extends Controller
         $order->delete();
         
         return redirect()->route('orders.index')->with('success', 'Order delete successfully');
+    }
+
+    public function generatePdf($orderId)
+    {
+        // 1. Obtener la orden con sus relaciones
+        $order = Order::with([
+                'user', 
+                'items', 
+                'items.product'  // Si necesito datos del producto
+            ])->findOrFail($orderId);
+    
+        // 2. Pasar la variable a la vista
+        $pdf = PDF::loadView('orders.pdf', [
+            'order' => $order  
+        ]);
+    
+        return $pdf->download("order-{$orderId}.pdf");
     }
 }

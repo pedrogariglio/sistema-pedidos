@@ -15,4 +15,6 @@ Route::get('/reports', function() {
     return View::make('reports.index');
 })->name('reports.index');
 
+Route::get('/orders/{order}/pdf', [OrderController::class, 'generatePdf'])->name('orders.pdf');
+
 

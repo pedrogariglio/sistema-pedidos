@@ -61,6 +61,17 @@
                 </svg>
                 Back to Orders
             </a>
+
+            <a href="{{ route('orders.pdf', $order->id) }}" 
+                class="inline-flex items-center justify-center w-20 h-10 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition duration-150 ease-in-out">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                     <polyline points="14 2 14 8 20 8"></polyline>
+                     <path d="M10 13h2v3"></path>
+                     <path d="M10 20v-3m-3 0h6"></path>
+                 </svg>
+                 PDF
+             </a>
         </div>
     </div>
 </div>
