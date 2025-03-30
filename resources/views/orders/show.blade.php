@@ -1,4 +1,4 @@
-@extends('../layouts.plantilla')
+@extends('../layouts.crud')
 
 @section('cabecera')
 <div class="py-6">

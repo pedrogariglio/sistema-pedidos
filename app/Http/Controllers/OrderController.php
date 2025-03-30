@@ -110,4 +110,9 @@ class OrderController extends Controller
     
         return $pdf->download("order-{$orderId}.pdf");
     }
+
+    public function dashboard()
+    {
+        $latestOrders = Order::latest()->take(10)->get();      
+    }
 }

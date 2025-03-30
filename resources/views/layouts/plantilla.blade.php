@@ -1,138 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sistema de Pedidos</title>
-    <!-- Archivo CSS actions buttons -->
     @vite(['resources/css/app.css', 'resources/css/dropdown-actions.css', 'resources/js/app.js', 'resources/js/dropdown-actions.js'])
 </head>
 <body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
     <!-- Wrapper para sidebar y contenido principal -->
     <div class="flex min-h-screen">
-        <!-- Sidebar -->
+        <!-- Sidebar (Actualizado según tu captura) -->
         <div class="bg-white w-64 shadow-lg fixed h-full z-20 transition-transform duration-300 ease-in-out" id="sidebar">
             <!-- Logo/Título -->
             <div class="p-4 border-b">
-                <h1 class="text-xl font-semibold text-gray-800">Sistema de Pedidos</h1>
+                <h1 class="text-xl font-semibold text-gray-800">Sistema Pedidos</h1>
             </div>
             
-            <!-- Menú de navegación -->
-            <nav class="mt-4">
-                <ul>
-                    <!-- Inicio - Usando tu ruta raíz -->
-                    <li class="mb-1">
-                        <a href="{{ url('/') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-400 hover:text-white rounded-lg transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Inicio
-                        </a>
-                    </li>
-                    
-                    <!-- Productos - Ya tienes esta ruta resource -->
-                    <li class="mb-1">
-                        <a href="{{ route('products.index') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-400 hover:text-white rounded-lg transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10" />
-                            </svg>
-                            Productos
-                        </a>
-                    </li>
-                    
-                    <!-- Órdenes - Ya tienes esta ruta resource -->
-                    <li class="mb-1">
-                        <a href="{{ route('orders.index') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-400 hover:text-white rounded-lg transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                            </svg>
-                            Órdenes
-                        </a>
-                    </li>
-                    
-                    <!-- Reportes - Necesitarás añadir esta ruta -->
-                    <li class="mb-1">
-                        <a href="{{ url('/reports') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-400 hover:text-white rounded-lg transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                            Reportes
-                        </a>
-                    </li>
+            <!-- Menú de navegación (Estilo de tu captura) -->
+            <nav class="mt-4 px-2">
+                <h2 class="text-lg font-semibold text-gray-700 px-2 mb-2">Admin</h2>
+                <ul class="space-y-1">
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Status</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Nº 0000</a></li>
+                    <li><a href="{{ url('/dashboard') }}" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Início</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Positiva</a></li>
+                    <li><a href="{{ route('products.index') }}" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Catálogo</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Proveedores</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Reportes</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Configuración</a></li>
+                    <li><a href="#" class="block px-2 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded">Administrar accesos</a></li>
                 </ul>
             </nav>
             
-            <!-- Sección inferior (opciones adicionales) -->
-            <div class="absolute bottom-0 w-full border-t pt-2 pb-2">
-                <!-- Si no estás usando autenticación de Laravel, puedes eliminar o modificar este enlace -->
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                    Cerrar sesión
-                </a>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="hidden">
-                    @csrf
-                </form>
+            <!-- Versión del sistema -->
+            <div class="absolute bottom-0 w-full p-4 border-t">
+                <p class="text-sm text-gray-500">Versión 1.0</p>
             </div>
         </div>
         
-        <!-- Botón para mostrar/ocultar sidebar en móviles -->
-        <div class="md:hidden fixed bottom-4 right-4 z-50">
-            <button type="button" id="sidebarToggle" class="p-2 rounded-full bg-blue-400 text-white shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Contenido principal -->
+        <!-- Contenido principal (Ajustado al diseño de tu captura) -->
         <div class="flex-1 flex flex-col md:ml-64">
-            <!-- Cabecera -->
-            <header class="bg-blue-400 text-white py-4 shadow">
+            <!-- Cabecera simplificada -->
+            <header class="bg-white py-4 shadow-sm">
                 <div class="container mx-auto px-4">
-                    <h1 class="text-2xl font-bold">@yield("cabecera")</h1>
+                    <h1 class="text-xl font-bold text-gray-800">Panel de Control</h1>
                 </div>
             </header>
             
             <!-- Contenido principal -->
             <main class="container mx-auto my-6 px-4 flex-grow">
-                @yield('content')
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Sección de Últimos Pedidos -->
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold">Últimos pedidos</h2>
+                            <button class="text-gray-400 hover:text-gray-600">×</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">N°</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Proveedor</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <!-- Ejemplo estático (reemplazar con datos reales) -->
+                                    <tr>
+                                        <td class="px-4 py-3">12/02</td>
+                                        <td class="px-4 py-3">Free</td>
+                                        <td class="px-4 py-3">18:43:2025</td>
+                                    </tr>
+                                    <!-- Más filas... -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de Nuevos Productos -->
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h2 class="text-lg font-semibold mb-4">Nuevos productos</h2>
+                        <div class="space-y-3">
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-medium">Total</span>
+                                <span>€65,00</span>
+                            </div>
+                            <ul class="space-y-2">
+                                <li class="py-1">Monitor 24 75 Hz</li>
+                                <li class="py-1">Pad silicone</li>
+                                <li class="py-1">Mechanical Keyboard</li>
+                                <!-- Más productos... -->
+                            </ul>
+                            <div class="pt-2 mt-2 border-t">
+                                <a href="{{ route('products.index') }}" class="text-indigo-600 hover:text-indigo-800">Ver todos los productos →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
             
-            <!-- Pie de página -->
-            <footer class="bg-gray-600 text-white py-4 mt-6 text-center">
-                @yield("pie")
-                <p class="text-sm">DataBasePG. All rights reserved. &copy;2025</p>
+            <!-- Pie de página (como en tu captura) -->
+            <footer class="bg-white py-4 text-center border-t">
+                <p class="text-sm text-gray-500">DataBasePG. All rights reserved. &copy;{{ date('Y') }}</p>
             </footer>
         </div>
     </div>
     
-    <!-- JavaScript para controlar el sidebar responsive -->
+    <!-- JavaScript para el sidebar responsive (se mantiene igual) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.getElementById('sidebar');
             const sidebarToggle = document.getElementById('sidebarToggle');
             
-            // Función para verificar ancho de pantalla
             function checkWidth() {
-                if (window.innerWidth < 768) { // md breakpoint
+                if (window.innerWidth < 768) {
                     sidebar.classList.add('-translate-x-full');
                 } else {
                     sidebar.classList.remove('-translate-x-full');
                 }
             }
             
-            // Inicializar
             checkWidth();
             
-            // Toggle sidebar en móviles
-            sidebarToggle.addEventListener('click', function() {
+            sidebarToggle?.addEventListener('click', function() {
                 sidebar.classList.toggle('-translate-x-full');
             });
             
-            // Ajustar cuando cambia el tamaño de la ventana
             window.addEventListener('resize', checkWidth);
         });
     </script>
