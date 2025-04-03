@@ -19,7 +19,13 @@ export default {
     safelist: [
         'text-red-500',
         'text-yellow-500',
-        'text-green-500'
+        'text-green-500',
+        'border-red-500',
+        'bg-indigo-500',
+        'bg-indigo-600',
+        'bg-indigo-700',
+        'focus:ring-indigo-500'
     ],
+    
     plugins: [],
 };

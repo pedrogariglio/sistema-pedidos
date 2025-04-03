@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderSearchRequest;
-use App\Models\Order;
+use App\Models\{Order, Product};
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 
@@ -45,7 +45,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create', [
+            'nextOrdenNumber' => Order::max('id') + 1,
+            'suppliers' => Supplier::all(),
+            'products' => Product::all(),
+        ]);
     }
 
     /**

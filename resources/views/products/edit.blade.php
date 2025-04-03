@@ -1,4 +1,4 @@
-@extends ("../layouts.plantilla")
+@extends ("../layouts.crud")
 
 @section('content')
 <div class="max-w-md mx-auto mt-10">

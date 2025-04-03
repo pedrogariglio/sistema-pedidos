@@ -8,7 +8,8 @@ export default defineConfig({
                 'resources/css/app.css', 
                 'resources/js/app.js',
                 'resources/js/dropdown-actions.js',
-                'resources/css/dropdown-actions.css'
+                'resources/css/dropdown-actions.css',
+                'resources/css/crud.css',
             ],
             refresh: true,
             publicDirectory: 'public',
