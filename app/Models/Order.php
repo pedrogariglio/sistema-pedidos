@@ -55,4 +55,9 @@ class Order extends Model
     {
        return $this->attributes['total_price'] ?? $this->calculateTotalPrice();
     }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }
